@@ -1,7 +1,28 @@
-services:
-  - type: web
-    plan: free
-    runtime: image
-    name: n8n-service
-    image:
-      url: docker.io/n8nio/n8n:latest
+# Exported from Render on 2025-12-18T10:56:17Z
+version: "1"
+projects:
+- name: N8N
+  environments:
+  - name: Production
+    services:
+    - type: web
+      name: n8n:latest
+      runtime: image
+      image:
+        url: docker.io/n8nio/n8n:latest
+      plan: starter
+      envVars:
+      - key: DB_TYPE
+        sync: false
+      - key: N8N_ENCRYPTION_KEY
+        sync: false
+      - key: N8N_PROTOCOL
+        sync: false
+      - key: N8N_HOST
+        sync: false
+      - key: WEBHOOK_URL
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      region: virginia
+      autoDeployTrigger: commit
